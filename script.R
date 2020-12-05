@@ -51,7 +51,23 @@ rver <- paste0(sessionInfo()$R.version$major, sessionInfo()$R.version$minor) %>%
 #### Data input and preparation ####
 
 # load data from GEO
-geo <- getGEO("GSE53045", destdir = here("data"))
+geo_id <- "GSE53045"
+geo <- getGEO(geo_id, destdir = here("data"))
+
+# # download raw data files
+# getGEOSuppFiles(geo_id, baseDir = here("data"))
+# geo_files <- list.files(here("data", geo_id))
+# 
+# geo_supp <- lapply(geo_files, function(file) {
+#   fread(file = here("data", geo_id, file))
+# }) %>% set_names(geo_files)
+# 
+# supp_mat <- as.data.frame(geo_supp$GSE53045_matrix_processed_GEO.txt.gz)
+# supp_methyl <- select(supp_mat, -`Detection Pval`) %>% column_to_rownames("ID_REF")
+# supp_samples <- colnames(supp_methyl)
+# supp_detectpval <- supp_mat[, seq(1, ncol(supp_mat), 2)] %>% 
+#   column_to_rownames("ID_REF") %>% set_names(supp_samples)
+
 
 # extract relevant phenotypic data and convert outcome (group) to numerical variable
 pheno <- pData(geo[[1]]) %>% 
@@ -122,8 +138,9 @@ rm(bioc, cran, geo, methyl, pheno, probes, probes_remove, test_index)
 #               lambda = cv.lambda$lambda.min) 
 
 ## DEBUG
-methyl_test <- methyl_test[, 1:1000]
-methyl_train <- methyl_train[, 1:1000]
+n <- 10000
+methyl_test <- methyl_test[, 1:n]
+methyl_train <- methyl_train[, 1:n]
 
 
 # train control: 5-fold cross validation
