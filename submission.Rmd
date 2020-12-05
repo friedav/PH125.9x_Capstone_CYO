@@ -149,12 +149,12 @@ pheno_test <- pheno[test_index, ]
 ```
 
 
-```{r debug}
-## DEBUG
-n <- 10000
-methyl_test <- methyl_test[, 1:n]
-methyl_train <- methyl_train[, 1:n]
-```
+<!-- ```{r debug} -->
+<!-- ## DEBUG -->
+<!-- n <- 10000 -->
+<!-- methyl_test <- methyl_test[, 1:n] -->
+<!-- methyl_train <- methyl_train[, 1:n] -->
+<!-- ``` -->
 
 
 ## Data exploration
