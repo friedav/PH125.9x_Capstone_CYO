@@ -11,7 +11,3 @@
 /cache/
 *.utf8.md
 *.knit.md
-
-# project data
-data*
-.Rproj.user

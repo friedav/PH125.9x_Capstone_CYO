@@ -1,6 +1,6 @@
 # PH125.9x: Capstone - Choose Your Own!
 
-This repository contains FD's solution to the Chose Your Own! project.
+This repository contains my solution to the Chose Your Own! project.
 The three files required for submission (Rmd, PDF, R) can be found in the
 `./submission` directory.  
 
