@@ -6,6 +6,8 @@
 # This is the choose-your-own project of Friederike David for the HarvardX's
 # Data Science Capstone course. In this project, smoking status is sought to be
 # predicted from methylation data downloaded from GEO.
+# Note: The code included in this script is mostly equivalent to the code chunks
+# in the submitted Rmd file.
 
 
 #### Prerequisites ####
