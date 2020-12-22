@@ -62,13 +62,11 @@ geo <- getGEO(geo_id, destdir = here("data"))
 
 # extract methylation data
 methyl <- geo[[1]]@assayData$exprs %>% t()
-glimpse(methyl)
 
 # extract relevant phenotypic data 
 pheno <- pData(geo[[1]]) %>% 
   select(geo_accession, disease_state = `disease state:ch1`) %>% 
   mutate(disease_state = factor(disease_state, levels = c("Smoker", "Control")))
-str(pheno)
 
 # remove probes with missing values
 probes_remove <- apply(methyl, 2, function(x) any(is.na(x)))
@@ -168,8 +166,6 @@ models.add <- c("glm", "lda", "knn", "rf", "svmLinear")
 tunegrids.add <- list(glm = NULL,
                       lda = NULL,
                       svmLinear = data.frame(C = seq(0, 2, length = 20)),
-                      gamLoess = expand.grid(span = seq(0.15, 0.65, len = 10), 
-                                             degree = 1),
                       rf = data.frame(mtry = 1:7),
                       knn = data.frame(k = seq(3, 51, 2)))
 
